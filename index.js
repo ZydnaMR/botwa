@@ -181,3 +181,5 @@ sock.ev.on('group-participants.update', async (update) => {
 }
 
 startBot();
+
+require('./server');
