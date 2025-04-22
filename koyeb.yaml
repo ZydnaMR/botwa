@@ -1,15 +1,5 @@
 name: botwa
-type: web
+type: docker
 regions:
   - frankfurt
-build:
-  install:
-    command: npm install
-  build:
-    command: echo 'no build needed'
-  run:
-    command: node index.js
-ports:
-  - internal: 3000
-    external: 80
-    protocol: http
+dockerfile: Dockerfile
