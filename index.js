@@ -12,6 +12,8 @@ const { prayerGroupJid } = require('./config');
 const scheduleGroupOpenClose = require('./schedule/scheduleGroupOpenClose');
 const { isRateLimited } = require('./lib/rateLimiter');
 const PORT = process.env.PORT || 3000;
+const qrcode = require('qrcode-terminal');
+
 
 async function startBot() {
   const { state, saveCreds } = await useMultiFileAuthState('./session');
@@ -27,14 +29,27 @@ async function startBot() {
   sock.ev.on('creds.update', saveCreds);
 
   sock.ev.on('connection.update', (update) => {
-    const { connection, lastDisconnect } = update;
+    const { connection, lastDisconnect, qr } = update;
+  
+    if (qr) {
+      qrcode.generate(qr, { small: true }); 
+    }
+  
     if (connection === 'close') {
-      const shouldReconnect = (lastDisconnect.error = new Boom(lastDisconnect?.error))?.output?.statusCode !== DisconnectReason.loggedOut;
-      if (shouldReconnect) startBot();
+      const shouldReconnect =
+        new Boom(lastDisconnect?.error)?.output?.statusCode !== DisconnectReason.loggedOut;
+  
+      if (shouldReconnect) {
+        console.log('🔄 Reconnecting...');
+        startBot();
+      } else {
+        console.log('❌ Bot logged out.');
+      }
     } else if (connection === 'open') {
       console.log('✅ Bot connected!');
     }
   });
+  
 
   setupOnMessage(sock);
 

@@ -1,11 +1,13 @@
-FROM node:23-alpine
+FROM node:23
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
-RUN npm install
+RUN npm install --omit=dev
 
 COPY . .
+
+EXPOSE 3000
 
 CMD ["node", "index.js"]

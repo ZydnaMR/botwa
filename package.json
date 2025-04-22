@@ -21,6 +21,7 @@
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.48",
     "node-cron": "^3.0.3",
+    "qrcode-terminal": "^0.12.0",
     "skia-canvas": "^2.0.2",
     "string-similarity": "^4.0.4",
     "wa-sticker-formatter": "^4.4.4",
