@@ -11,6 +11,7 @@ const schedulePrayerReminder = require('./schedule/schedulePrayerReminder');
 const { prayerGroupJid } = require('./config');
 const scheduleGroupOpenClose = require('./schedule/scheduleGroupOpenClose');
 const { isRateLimited } = require('./lib/rateLimiter');
+const PORT = process.env.PORT || 3000;
 
 async function startBot() {
   const { state, saveCreds } = await useMultiFileAuthState('./session');
