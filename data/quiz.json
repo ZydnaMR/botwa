@@ -1,0 +1,18 @@
+[
+    {
+      "soal": "Apa ibu kota Indonesia?",
+      "pilihan": ["Jakarta", "Bandung", "Surabaya"],
+      "jawaban": "Jakarta"
+    },
+    {
+      "soal": "Siapa penemu lampu pijar?",
+      "pilihan": ["Albert Einstein", "Isaac Newton", "Thomas Edison"],
+      "jawaban": "Thomas Edison"
+    },
+    {
+      "soal": "Berapa hasil dari 7 x 8?",
+      "pilihan": ["54", "56", "58"],
+      "jawaban": "56"
+    }
+  ]
+  
