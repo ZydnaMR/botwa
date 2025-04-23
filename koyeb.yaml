@@ -2,4 +2,6 @@ name: botwa
 type: docker
 regions:
   - frankfurt
-dockerfile: Dockerfile
+build:
+  dockerfile: Dockerfile
+  context: .
